@@ -1,0 +1,44 @@
+<html>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<link rel=stylesheet type=text/css href="/home/harshit/fullstack/vagrant/static/bootstrap.min.css">
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link rel=stylesheet type=text/css href="/home/harshit/fullstack/vagrant/static/style.css">
+<body>
+<div class="title">    
+    <h1 class="header">{{restaurant.name}}</h1></div>
+<div class="container-fluid body">
+    <div class="lk "> <a href="{{url_for('newMenuItem',restaurant_id=restaurant.id)}}">New </a></div>
+	{%with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+	{%for message in messages%}
+		<l1><strong>{{ message }} </strong> </li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+	{% endwith %}
+    {% if count %}
+    <center><h2> No item to display :(</h2></center>
+    {% endif %}
+{% for i in items %}
+<div class="row">
+<div class="name col-md-6 col-sm-6 col-lg-6 col-xs-6 container-fluid">
+<p >{{i.name}}  -  {{i.price}} </p>
+<p >{{i.course}}</p>
+<p >{{i.description}}</p>
+
+<p ></p>
+    </div>
+<div class="col-md-6 col-sm-6 col-lg-6 col-xs-6 linkC container-fluid">
+    <div class="lk container-fluid"><a href="{{url_for('editMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}">edit </a></div>
+    <div class="lk container-fluid"> <a href="{{url_for('deleteMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}">delete </a></div>
+    </div>
+    </div>
+
+{% endfor %}
+</div>
+</body>
+
+</html>
+

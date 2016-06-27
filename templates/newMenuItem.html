@@ -1,0 +1,21 @@
+<html>
+     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<link rel=stylesheet type=text/css href="/home/harshit/fullstack/vagrant/static/bootstrap.min.css">
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link rel=stylesheet type=text/css href="/home/harshit/fullstack/vagrant/static/style.css">
+<body><div class="container-fluid body">
+<h1> New Menu Item </h1><br>
+
+<form action="{{url_for('newMenuItem', restaurant_id=restaurant_id )}}" method = 'POST'>
+
+<input type='text' size='30' name='name' placeholder="name" class="form-control"><br>
+<input type='text' size='30' name='price' placeholder="price" class="form-control"><br>
+<input type='text' size='30' name='disc' placeholder="discr" class="form-control"><br>    
+
+<input type='submit' value='Create' class="btn">
+
+</form>
+    </div>
+</body>
+</html>
